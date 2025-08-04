@@ -17,9 +17,19 @@ if (!defined('ABSPATH')) {
 class WPMatch_Interaction_Manager {
 
     /**
-     * Constructor
+     * Database instance
+     *
+     * @var WPMatch_Database
      */
-    public function __construct() {
+    private $database;
+
+    /**
+     * Constructor
+     *
+     * @param WPMatch_Database $database Database instance
+     */
+    public function __construct($database = null) {
+        $this->database = $database;
         add_action('init', array($this, 'init'));
         add_action('wp_ajax_wpmatch_like_profile', array($this, 'ajax_like_profile'));
         add_action('wp_ajax_wpmatch_unlike_profile', array($this, 'ajax_unlike_profile'));
@@ -57,8 +67,7 @@ class WPMatch_Interaction_Manager {
         }
 
         global $wpdb;
-        $database = wpmatch_plugin()->database;
-        $interactions_table = $database->get_table_name('interactions');
+        $interactions_table = $this->database->get_table_name('interactions');
 
         // Check for rate limiting on certain interactions
         if (in_array($interaction_type, array('like', 'view'))) {

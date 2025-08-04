@@ -49,9 +49,11 @@ class WPMatch_Profile_Field_Manager {
 
     /**
      * Constructor
+     *
+     * @param WPMatch_Database $database Database instance
      */
-    public function __construct() {
-        $this->database = wpmatch_plugin()->database;
+    public function __construct($database = null) {
+        $this->database = $database;
         
         // Initialize dependencies
         add_action('init', array($this, 'init_dependencies'), 15);

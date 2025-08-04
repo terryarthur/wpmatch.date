@@ -233,13 +233,13 @@ class WPMatch_Plugin {
         $this->user_manager = new WPMatch_User_Manager();
         $this->profile_manager = new WPMatch_Profile_Manager();
         $this->messaging_manager = new WPMatch_Messaging_Manager();
-        $this->interaction_manager = new WPMatch_Interaction_Manager();
+        $this->interaction_manager = new WPMatch_Interaction_Manager($this->database);
         
-        // Initialize field-related components
+        // Initialize field-related components with database dependency
         $this->field_type_registry = new WPMatch_Field_Type_Registry();
         $this->field_validator = new WPMatch_Field_Validator();
-        $this->field_groups_manager = new WPMatch_Field_Groups_Manager();
-        $this->profile_field_manager = new WPMatch_Profile_Field_Manager();
+        $this->field_groups_manager = new WPMatch_Field_Groups_Manager($this->database);
+        $this->profile_field_manager = new WPMatch_Profile_Field_Manager($this->database);
 
         if (is_admin()) {
             $this->admin = new WPMatch_Admin();

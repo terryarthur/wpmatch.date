@@ -35,9 +35,11 @@ class WPMatch_Field_Groups_Manager {
 
     /**
      * Constructor
+     *
+     * @param WPMatch_Database $database Database instance
      */
-    public function __construct() {
-        $this->database = wpmatch_plugin()->database;
+    public function __construct($database = null) {
+        $this->database = $database;
     }
 
     /**
