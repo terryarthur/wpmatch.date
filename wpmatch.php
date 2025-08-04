@@ -39,7 +39,7 @@ define('WPMATCH_PUBLIC_PATH', WPMATCH_PLUGIN_PATH . 'public/');
 if (version_compare(PHP_VERSION, '7.4', '<')) {
     add_action('admin_notices', function() {
         echo '<div class="notice notice-error"><p>';
-        echo esc_html__('WPMatch requires PHP 7.4 or higher. Please update your PHP version.', 'wpmatch');
+        echo 'WPMatch requires PHP 7.4 or higher. Please update your PHP version.';
         echo '</p></div>';
     });
     return;
@@ -283,7 +283,7 @@ class WPMatch_Plugin {
         if (version_compare($wp_version, '5.9', '<')) {
             add_action('admin_notices', function() {
                 echo '<div class="notice notice-error"><p>';
-                echo esc_html__('WP Dating Plugin requires WordPress 5.9 or higher.', 'wpmatch');
+                echo 'WP Dating Plugin requires WordPress 5.9 or higher.';
                 echo '</p></div>';
             });
             return false;

@@ -30,20 +30,19 @@ class WPMatch_Field_Type_Registry {
      * Constructor
      */
     public function __construct() {
-        $this->register_default_field_types();
-        
-        /**
-         * Fires after default field types are registered
-         * 
-         * @param WPMatch_Field_Type_Registry $registry The registry instance
-         */
-        do_action('wpmatch_field_types_registered', $this);
+        // Delay registration until text domain is loaded
+        add_action('init', array($this, 'register_default_field_types'), 20);
     }
 
     /**
      * Register default field types
      */
-    private function register_default_field_types() {
+    public function register_default_field_types() {
+        // Only register once
+        if (!empty($this->field_types)) {
+            return;
+        }
+        
         // Text field
         $this->register_field_type('text', array(
             'label' => __('Text Input', 'wpmatch'),
@@ -527,6 +526,13 @@ class WPMatch_Field_Type_Registry {
             'validate_callback' => array($this, 'validate_lifestyle_field'),
             'sanitize_callback' => array($this, 'sanitize_lifestyle_field')
         ));
+        
+        /**
+         * Fires after default field types are registered
+         * 
+         * @param WPMatch_Field_Type_Registry $registry The registry instance
+         */
+        do_action('wpmatch_field_types_registered', $this);
     }
 
     /**
