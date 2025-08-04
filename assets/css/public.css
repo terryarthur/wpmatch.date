@@ -1,0 +1,1040 @@
+/**
+ * WPMatch Public Styles
+ * 
+ * @package WPMatch
+ * @since 1.0.0
+ */
+
+/* =====================================
+   CSS Variables
+   ===================================== */
+
+:root {
+    --wpmatch-primary: #e91e63;
+    --wpmatch-primary-dark: #c2185b;
+    --wpmatch-secondary: #2196f3;
+    --wpmatch-success: #4caf50;
+    --wpmatch-error: #f44336;
+    --wpmatch-warning: #ff9800;
+    --wpmatch-info: #2196f3;
+    --wpmatch-light: #f8f9fa;
+    --wpmatch-dark: #333;
+    --wpmatch-muted: #666;
+    --wpmatch-border: #e9ecef;
+    --wpmatch-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --wpmatch-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --wpmatch-border-radius: 8px;
+    --wpmatch-border-radius-lg: 12px;
+    --wpmatch-transition: all 0.3s ease;
+}
+
+/* =====================================
+   Base Styles
+   ===================================== */
+
+.wpmatch-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.wpmatch-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: var(--wpmatch-border-radius-lg);
+    box-shadow: var(--wpmatch-shadow);
+}
+
+.wpmatch-form h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--wpmatch-dark);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--wpmatch-border-radius);
+    font-size: 16px;
+    transition: var(--wpmatch-transition);
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--wpmatch-primary);
+    box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.1);
+}
+
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+/* =====================================
+   Buttons
+   ===================================== */
+
+.button, .btn {
+    background: var(--wpmatch-primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--wpmatch-border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: var(--wpmatch-transition);
+    text-align: center;
+    line-height: 1;
+}
+
+.button:hover, .btn:hover {
+    background: var(--wpmatch-primary-dark);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.button-large {
+    padding: 15px 30px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.button-secondary, .btn-secondary {
+    background: #666;
+}
+
+.button-secondary:hover, .btn-secondary:hover {
+    background: #555;
+}
+
+.btn-primary {
+    background: var(--wpmatch-primary);
+}
+
+.btn-primary:hover {
+    background: var(--wpmatch-primary-dark);
+}
+
+.btn-success {
+    background: var(--wpmatch-success);
+}
+
+.btn-error {
+    background: var(--wpmatch-error);
+}
+
+.btn-info {
+    background: var(--wpmatch-info);
+}
+
+/* =====================================
+   Profile Cards & Search
+   ===================================== */
+
+.wpmatch-profile-search {
+    margin: 20px 0;
+}
+
+.profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.profile-card {
+    background: #fff;
+    border-radius: var(--wpmatch-border-radius-lg);
+    box-shadow: var(--wpmatch-shadow);
+    overflow: hidden;
+    transition: var(--wpmatch-transition);
+    cursor: pointer;
+    position: relative;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--wpmatch-shadow-hover);
+}
+
+.profile-photo {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.profile-card:hover .profile-photo img {
+    transform: scale(1.05);
+}
+
+.online-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 12px;
+    height: 12px;
+    background: var(--wpmatch-success);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile-info {
+    padding: 20px;
+}
+
+.profile-name {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--wpmatch-dark);
+}
+
+.profile-location,
+.profile-distance {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    color: var(--wpmatch-muted);
+}
+
+.profile-location::before {
+    content: "📍 ";
+    margin-right: 4px;
+}
+
+.profile-distance::before {
+    content: "📍 ";
+    margin-right: 4px;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.profile-actions .btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: var(--wpmatch-border-radius);
+    background: #f5f5f5;
+    color: #666;
+    cursor: pointer;
+    transition: var(--wpmatch-transition);
+    font-size: 14px;
+    text-align: center;
+}
+
+.profile-actions .btn:hover {
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-like {
+    background: linear-gradient(135deg, #ff6b9d, var(--wpmatch-primary));
+    color: white;
+}
+
+.btn-like:hover {
+    background: linear-gradient(135deg, var(--wpmatch-primary), var(--wpmatch-primary-dark));
+}
+
+.btn-message {
+    background: linear-gradient(135deg, var(--wpmatch-success), #388e3c);
+    color: white;
+}
+
+.btn-message:hover {
+    background: linear-gradient(135deg, #388e3c, #2e7d32);
+}
+
+.btn-view-profile {
+    background: linear-gradient(135deg, var(--wpmatch-secondary), #1976d2);
+    color: white;
+}
+
+.btn-view-profile:hover {
+    background: linear-gradient(135deg, #1976d2, #1565c0);
+}
+
+/* =====================================
+   Search Filters
+   ===================================== */
+
+.wpmatch-search-filters {
+    margin-bottom: 30px;
+}
+
+.wpmatch-search-form {
+    background: #fff;
+    padding: 25px;
+    border-radius: var(--wpmatch-border-radius-lg);
+    box-shadow: var(--wpmatch-shadow);
+    margin-bottom: 30px;
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-row:last-child {
+    margin-bottom: 0;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--wpmatch-dark);
+}
+
+.filter-group select,
+.filter-group input[type="text"],
+.filter-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--wpmatch-border-radius);
+    font-size: 14px;
+    transition: var(--wpmatch-transition);
+}
+
+.filter-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+/* =====================================
+   Messaging Interface
+   ===================================== */
+
+.wpmatch-messages {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    height: 600px;
+    border-radius: var(--wpmatch-border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--wpmatch-shadow);
+    background: #fff;
+}
+
+.conversations-list {
+    background: var(--wpmatch-light);
+    border-right: 1px solid var(--wpmatch-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.conversations-list h3 {
+    padding: 20px;
+    margin: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--wpmatch-border);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--wpmatch-dark);
+}
+
+.conversations {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.conversation-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--wpmatch-border);
+    cursor: pointer;
+    transition: var(--wpmatch-transition);
+    position: relative;
+}
+
+.conversation-item:hover {
+    background: var(--wpmatch-border);
+}
+
+.conversation-item.active {
+    background: var(--wpmatch-primary);
+    color: white;
+}
+
+.conversation-item.unread {
+    background: #fff3e0;
+    font-weight: 600;
+}
+
+.conversation-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.conversation-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.conversation-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.conversation-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.last-message {
+    margin: 0;
+    font-size: 12px;
+    color: var(--wpmatch-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.last-time {
+    font-size: 11px;
+    color: #999;
+}
+
+.unread-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--wpmatch-primary);
+    color: white;
+    border-radius: 10px;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.message-thread {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.thread-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--wpmatch-border);
+    background: var(--wpmatch-light);
+}
+
+.thread-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--wpmatch-dark);
+}
+
+.thread-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    position: relative;
+}
+
+.message-own {
+    align-self: flex-end;
+    background: var(--wpmatch-primary);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.message-other {
+    align-self: flex-start;
+    background: #f1f3f4;
+    color: var(--wpmatch-dark);
+    border-bottom-left-radius: 4px;
+}
+
+.message-content {
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.message-time {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+.message-compose {
+    padding: 20px;
+    border-top: 1px solid var(--wpmatch-border);
+    background: var(--wpmatch-light);
+}
+
+.message-compose form {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.message-compose textarea {
+    flex: 1;
+    min-height: 40px;
+    max-height: 120px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    resize: none;
+    font-family: inherit;
+    transition: var(--wpmatch-transition);
+}
+
+.message-compose textarea:focus {
+    outline: none;
+    border-color: var(--wpmatch-primary);
+}
+
+.message-compose button {
+    background: var(--wpmatch-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: var(--wpmatch-transition);
+}
+
+.message-compose button:hover {
+    background: var(--wpmatch-primary-dark);
+}
+
+/* =====================================
+   Notifications & Modals
+   ===================================== */
+
+.wpmatch-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: var(--wpmatch-border-radius);
+    color: white;
+    font-weight: 500;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    max-width: 300px;
+}
+
+.wpmatch-notification.show {
+    transform: translateX(0);
+}
+
+.notification-success {
+    background: var(--wpmatch-success);
+}
+
+.notification-error {
+    background: var(--wpmatch-error);
+}
+
+.notification-info {
+    background: var(--wpmatch-info);
+}
+
+.match-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.match-modal {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-width: 400px;
+    margin: 20px;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.match-content h2 {
+    color: var(--wpmatch-primary);
+    margin: 0 0 15px 0;
+    font-size: 28px;
+}
+
+.match-content p {
+    margin: 0 0 30px 0;
+    color: var(--wpmatch-muted);
+    font-size: 16px;
+}
+
+.match-content .btn {
+    margin: 0 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--wpmatch-border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--wpmatch-transition);
+}
+
+.start-conversation {
+    background: var(--wpmatch-primary);
+    color: white;
+}
+
+.start-conversation:hover {
+    background: var(--wpmatch-primary-dark);
+    transform: translateY(-2px);
+}
+
+.close-modal {
+    background: #f5f5f5;
+    color: var(--wpmatch-muted);
+}
+
+.close-modal:hover {
+    background: #e0e0e0;
+}
+
+/* =====================================
+   Loading & Error States
+   ===================================== */
+
+.loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--wpmatch-muted);
+    font-size: 16px;
+}
+
+.loading::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--wpmatch-primary);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--wpmatch-error);
+    background: #ffebee;
+    border-radius: var(--wpmatch-border-radius);
+    margin: 20px 0;
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--wpmatch-muted);
+    font-size: 18px;
+    background: var(--wpmatch-light);
+    border-radius: var(--wpmatch-border-radius-lg);
+    margin: 20px 0;
+}
+
+.pagination-info {
+    text-align: center;
+    padding: 20px;
+    color: var(--wpmatch-muted);
+    font-size: 14px;
+}
+
+/* =====================================
+   User Profile
+   ===================================== */
+
+.wpmatch-user-profile {
+    background: #fff;
+    border-radius: var(--wpmatch-border-radius-lg);
+    box-shadow: var(--wpmatch-shadow);
+    overflow: hidden;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, var(--wpmatch-primary), var(--wpmatch-primary-dark));
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.profile-header h2 {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.profile-completion {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.profile-content {
+    padding: 30px;
+}
+
+.profile-photos,
+.profile-info {
+    margin-bottom: 30px;
+}
+
+.profile-photos h3,
+.profile-info h3 {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--wpmatch-dark);
+}
+
+.photo-upload {
+    margin-top: 15px;
+}
+
+.info-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-fields label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.info-fields input,
+.info-fields select {
+    margin-top: 5px;
+}
+
+/* =====================================
+   Responsive Design
+   ===================================== */
+
+@media (max-width: 768px) {
+    .wpmatch-container {
+        padding: 0 15px;
+    }
+
+    .profiles-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .profile-card {
+        border-radius: var(--wpmatch-border-radius);
+    }
+
+    .profile-photo {
+        height: 250px;
+    }
+
+    .profile-info {
+        padding: 15px;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .profile-actions .btn {
+        padding: 12px;
+    }
+
+    .wpmatch-messages {
+        grid-template-columns: 1fr;
+        height: 70vh;
+    }
+
+    .conversations-list {
+        border-right: none;
+        border-bottom: 1px solid var(--wpmatch-border);
+        max-height: 200px;
+    }
+
+    .filter-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-group {
+        min-width: auto;
+    }
+
+    .wpmatch-form {
+        margin: 15px;
+        padding: 20px;
+    }
+
+    .match-modal {
+        margin: 15px;
+        padding: 30px 20px;
+    }
+
+    .wpmatch-notification {
+        right: 15px;
+        left: 15px;
+        max-width: none;
+    }
+
+    .info-fields {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .profile-header {
+        padding: 30px 20px;
+    }
+
+    .profile-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profiles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card {
+        margin: 0 10px;
+    }
+
+    .profile-photo {
+        height: 200px;
+    }
+
+    .wpmatch-search-form {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+
+    .conversation-item {
+        padding: 12px 15px;
+    }
+
+    .conversation-avatar {
+        width: 40px;
+        height: 40px;
+        margin-right: 12px;
+    }
+
+    .message-compose form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .message-compose button {
+        width: 100%;
+        border-radius: var(--wpmatch-border-radius);
+        height: 44px;
+    }
+}
+
+/* =====================================
+   Utility Classes
+   ===================================== */
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+.mb-4 { margin-bottom: 32px; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mt-4 { margin-top: 32px; }
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.gap-1 { gap: 8px; }
+.gap-2 { gap: 16px; }
+.gap-3 { gap: 24px; }
+
+/* =====================================
+   Animation Classes
+   ===================================== */
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* =====================================
+   Print Styles
+   ===================================== */
+
+@media print {
+    .profile-actions,
+    .message-compose,
+    .wpmatch-notification,
+    .match-modal-overlay {
+        display: none;
+    }
+
+    .profile-card {
+        break-inside: avoid;
+    }
+
+    .wpmatch-messages {
+        grid-template-columns: 1fr;
+    }
+
+    .conversations-list {
+        display: none;
+    }
+}

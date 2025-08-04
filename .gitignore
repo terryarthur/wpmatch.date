@@ -1,0 +1,12 @@
+# WordPress Dating Plugin - WPMatch
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+vendor/
+*.zip
+.claude/
+.crush/
+.serena/
+Archive*.zip
+wpmatch-theme.zip
