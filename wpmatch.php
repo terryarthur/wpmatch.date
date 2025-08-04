@@ -114,6 +114,34 @@ class WPMatch_Plugin {
     public $interaction_manager;
 
     /**
+     * Profile field manager instance
+     *
+     * @var WPMatch_Profile_Field_Manager
+     */
+    public $profile_field_manager;
+
+    /**
+     * Field type registry instance
+     *
+     * @var WPMatch_Field_Type_Registry
+     */
+    public $field_type_registry;
+
+    /**
+     * Field validator instance
+     *
+     * @var WPMatch_Field_Validator
+     */
+    public $field_validator;
+
+    /**
+     * Field groups manager instance
+     *
+     * @var WPMatch_Field_Groups_Manager
+     */
+    public $field_groups_manager;
+
+    /**
      * Get plugin instance
      *
      * @return WPMatch_Plugin
@@ -150,6 +178,10 @@ class WPMatch_Plugin {
         require_once WPMATCH_INCLUDES_PATH . 'class-interaction-manager.php';
         require_once WPMATCH_INCLUDES_PATH . 'class-frontend-field-renderer.php';
         require_once WPMATCH_INCLUDES_PATH . 'class-field-import-export.php';
+        require_once WPMATCH_INCLUDES_PATH . 'class-profile-field-manager.php';
+        require_once WPMATCH_INCLUDES_PATH . 'class-field-type-registry.php';
+        require_once WPMATCH_INCLUDES_PATH . 'class-field-validator.php';
+        require_once WPMATCH_INCLUDES_PATH . 'class-field-groups-manager.php';
         require_once WPMATCH_INCLUDES_PATH . 'class-default-dating-fields.php';
         require_once WPMATCH_INCLUDES_PATH . 'class-activator.php';
         require_once WPMATCH_INCLUDES_PATH . 'class-deactivator.php';
@@ -167,6 +199,7 @@ class WPMatch_Plugin {
         // Admin classes
         if (is_admin()) {
             require_once WPMATCH_ADMIN_PATH . 'class-admin.php';
+            require_once WPMATCH_ADMIN_PATH . 'class-profile-fields-admin.php';
             require_once WPMATCH_ADMIN_PATH . 'class-profile-fields-list-table.php';
         }
 
@@ -201,6 +234,12 @@ class WPMatch_Plugin {
         $this->profile_manager = new WPMatch_Profile_Manager();
         $this->messaging_manager = new WPMatch_Messaging_Manager();
         $this->interaction_manager = new WPMatch_Interaction_Manager();
+        
+        // Initialize field-related components
+        $this->field_type_registry = new WPMatch_Field_Type_Registry();
+        $this->field_validator = new WPMatch_Field_Validator();
+        $this->field_groups_manager = new WPMatch_Field_Groups_Manager();
+        $this->profile_field_manager = new WPMatch_Profile_Field_Manager();
 
         if (is_admin()) {
             $this->admin = new WPMatch_Admin();
@@ -395,7 +434,7 @@ class WPMatch_Plugin {
         );
 
         // Localize script
-        wp_localize_script('wpmatch-admin', 'wpDatingAdmin', array(
+        wp_localize_script('wpmatch-admin', 'wpMatchAdminVars', array(
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('wp_dating_admin_nonce'),
             'strings' => array(

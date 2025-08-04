@@ -141,7 +141,7 @@ class WPMatch_Profile_Fields_Admin {
         // Profile fields admin script
         wp_enqueue_script(
             'wpmatch-profile-fields-admin',
-            WPMATCH_PLUGIN_URL . 'admin/js/profile-fields-admin.js',
+            WPMATCH_PLUGIN_URL . 'assets/js/admin-profile-fields.js',
             array('jquery', 'jquery-ui-sortable', 'jquery-ui-dialog', 'wp-util'),
             WPMATCH_VERSION,
             true
@@ -150,7 +150,7 @@ class WPMatch_Profile_Fields_Admin {
         // Profile fields admin styles
         wp_enqueue_style(
             'wpmatch-profile-fields-admin',
-            WPMATCH_PLUGIN_URL . 'admin/css/profile-fields-admin.css',
+            WPMATCH_PLUGIN_URL . 'assets/css/admin-profile-fields.css',
             array('wp-jquery-ui-dialog'),
             WPMATCH_VERSION
         );

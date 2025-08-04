@@ -533,7 +533,7 @@
 
         var data = {
             action: 'wpmatch_create_default_fields',
-            nonce: wpMatchAdminVars.nonce
+            nonce: wpMatchFieldsAdmin.nonce
         };
 
         $.post(ajaxurl, data)
