@@ -39,15 +39,19 @@ class WPMatch_Profile_Fields_List_Table extends WP_List_Table {
 
     /**
      * Constructor
+     *
+     * @param WPMatch_Profile_Field_Manager $field_manager Field manager instance
+     * @param WPMatch_Field_Type_Registry $type_registry Field type registry instance
      */
-    public function __construct() {
+    public function __construct($field_manager = null, $type_registry = null) {
         parent::__construct(array(
             'singular' => 'profile_field',
             'plural'   => 'profile_fields',
             'ajax'     => true,
         ));
 
-        $this->field_manager = new WPMatch_Profile_Field_Manager();
+        $this->field_manager = $field_manager ?: new WPMatch_Profile_Field_Manager();
+        $this->type_registry = $type_registry ?: new WPMatch_Field_Type_Registry();
         $this->type_registry = new WPMatch_Field_Type_Registry();
     }
 

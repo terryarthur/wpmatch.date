@@ -49,8 +49,16 @@ class WPMatch_Profile_Fields_Admin {
 
     /**
      * Constructor
+     *
+     * @param WPMatch_Profile_Field_Manager $field_manager Field manager instance
+     * @param WPMatch_Field_Type_Registry $type_registry Field type registry instance  
+     * @param WPMatch_Field_Validator $validator Field validator instance
      */
-    public function __construct() {
+    public function __construct($field_manager = null, $type_registry = null, $validator = null) {
+        $this->field_manager = $field_manager;
+        $this->type_registry = $type_registry;
+        $this->validator = $validator;
+        
         add_action('init', array($this, 'init'), 20);
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
@@ -80,14 +88,25 @@ class WPMatch_Profile_Fields_Admin {
      * Initialize dependencies
      */
     public function init() {
-        // Load dependencies
-        require_once WPMATCH_INCLUDES_PATH . 'class-profile-field-manager.php';
-        require_once WPMATCH_INCLUDES_PATH . 'class-field-type-registry.php';
-        require_once WPMATCH_INCLUDES_PATH . 'class-field-validator.php';
-        require_once WPMATCH_ADMIN_PATH . 'class-profile-fields-list-table.php';
+        // Load dependencies if not already provided
+        if (!$this->field_manager) {
+            require_once WPMATCH_INCLUDES_PATH . 'class-profile-field-manager.php';
+            $this->field_manager = new WPMatch_Profile_Field_Manager();
+        }
+        
+        if (!$this->type_registry) {
+            require_once WPMATCH_INCLUDES_PATH . 'class-field-type-registry.php';
+            $this->type_registry = new WPMatch_Field_Type_Registry();
+        }
+        
+        if (!$this->validator) {
+            require_once WPMATCH_INCLUDES_PATH . 'class-field-validator.php';
+            $this->validator = new WPMatch_Field_Validator();
+        }
 
-        // Initialize managers
-        $this->field_manager = new WPMatch_Profile_Field_Manager();
+        // Initialize list table
+        require_once WPMATCH_ADMIN_PATH . 'class-profile-fields-list-table.php';
+        $this->list_table = new WPMatch_Profile_Fields_List_Table($this->field_manager, $this->type_registry);
         $this->type_registry = new WPMatch_Field_Type_Registry();
         $this->validator = new WPMatch_Field_Validator();
         

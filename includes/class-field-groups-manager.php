@@ -40,6 +40,14 @@ class WPMatch_Field_Groups_Manager {
      */
     public function __construct($database = null) {
         $this->database = $database;
+        
+        // If no database provided, try to get from global plugin instance
+        if (!$this->database && function_exists('wpmatch_plugin')) {
+            $plugin = wpmatch_plugin();
+            if ($plugin && $plugin->database) {
+                $this->database = $plugin->database;
+            }
+        }
     }
 
     /**

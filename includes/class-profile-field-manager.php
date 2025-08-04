@@ -55,6 +55,14 @@ class WPMatch_Profile_Field_Manager {
     public function __construct($database = null) {
         $this->database = $database;
         
+        // If no database provided, try to get from global plugin instance
+        if (!$this->database && function_exists('wpmatch_plugin')) {
+            $plugin = wpmatch_plugin();
+            if ($plugin && $plugin->database) {
+                $this->database = $plugin->database;
+            }
+        }
+        
         // Initialize dependencies
         add_action('init', array($this, 'init_dependencies'), 15);
     }
